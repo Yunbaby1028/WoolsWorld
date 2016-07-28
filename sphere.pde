@@ -12,7 +12,7 @@ class Sphere {
       return ceil(myMovie.time() * 60) - 1;
   }
   
-  int newFrame = 0;
+  //int newFrame = 0;
     
   Sphere( color c) {
     this.c = c;
@@ -23,7 +23,7 @@ class Sphere {
     
     image(myMovie, 0, 0, width, height);
     
-    if(x > 0.3 && getFrame() < (getLength() - 1)){
+    if(x < -50 && getFrame() < (getLength() - 1)){
       play = 1;
       myMovie.play();
     }
@@ -32,13 +32,15 @@ class Sphere {
       myMovie.play();
     }
     
-    if(getFrame() < 0) myMovie.play();
+    //if(getFrame() < 1) myMovie.play();
     
-    float newSpeed = map(x, 0, 150, 0*play, 2*play);
+    float newSpeed = map(abs(y)/10, 0, 150, 0*play, 2*play);
     myMovie.speed(newSpeed);
     
     fill(255);
-    println(X);
+    println(x);
+    println(y);
+    println(z);
     text("Position X of Root: " + nfc(x, 2), 10, 30);
     text(getFrame() + " / " + (getLength() - 1), 10, 50);   
   }
